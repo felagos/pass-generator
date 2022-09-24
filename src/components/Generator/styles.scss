@@ -1,0 +1,120 @@
+@import "../../styles/abstracts/variables";
+
+#passwordTooltip {
+  background-color: $green !important;
+}
+
+.generator {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  width: 400px;
+
+  .header {
+    color: $gray;
+    font-weight: bold;
+    background-color: $black;
+    margin-bottom: 30px;
+  }
+
+  .password {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    &--left {
+      text-align: right;
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 70px;
+    background-color: $black-lighter;
+    margin-bottom: 30px;
+
+    &__value {
+      color: $gray;
+      max-width: 340px;
+    }
+
+    &__copy {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      &--disabled {
+        opacity: 0.6;
+      }
+
+    }
+
+  }
+
+  .form {
+    height: 400px;
+    background-color: $black-lighter;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+
+    &__checkboxes {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      align-items: flex-start;
+      gap: 20px;
+
+      label {
+        font-size: 18px;
+        color: $white;
+      }
+    }
+
+    &__header {
+      display: flex;
+      align-items: center;
+    }
+
+    &__content {
+      flex: 1;
+    }
+
+    &__title {
+      color: $white;
+      flex: 1;
+      text-align: left;
+    }
+
+    &__value {
+      color: $green;
+      font-weight: bold;
+    }
+
+    &__input {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    &__button {
+      background-color: $green;
+      color: $black;
+      width: 100%;
+      border-radius: 10px;
+      font-size: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      &:disabled {
+        opacity: 0.6;
+      }
+
+    }
+
+  }
+
+}
