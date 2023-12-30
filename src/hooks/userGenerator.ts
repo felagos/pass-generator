@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { generate } from "@wcj/generate-password";
 
 const MAX_CHARACTERS = 32;
 const MIN_CHARACTERS = 24;
@@ -24,6 +25,17 @@ export const useGenerator = () => {
     return `${password.slice(0, MIN_CHARACTERS)} ...`;
   }, [password]);
 
+  const generatePassword = () => {
+    generate({
+      length: totalCharacters,
+      lowerCase: checkboxes.lower_case,
+      upperCase: checkboxes.upper_case,
+      numeric: checkboxes.numbers,
+      special: checkboxes.symbols
+    });
+    setPassword(password);
+  };
+
 
   return {
     checkboxes,
@@ -35,6 +47,7 @@ export const useGenerator = () => {
     setPassword,
     totalCharacters,
     MAX_CHARACTERS,
+    generatePassword,
   } as const;
 
 

@@ -1,5 +1,4 @@
 import ReactTooltip from "react-tooltip";
-import { generate } from "@wcj/generate-password";
 import classNames from "classnames";
 
 import IconCopy from "../../assets/copy.svg";
@@ -13,11 +12,11 @@ export const Generator = () => {
     checkboxes,
     setCheckboxes,
     password,
-    setPassword,
     totalCharacters,
     setTotalCharacters,
     choppedPassword,
     isDisabled,
+    generatePassword,
     MAX_CHARACTERS,
   } = useGenerator();
 
@@ -32,14 +31,7 @@ export const Generator = () => {
   };
 
   const handleClick = () => {
-    const password = generate({
-      length: totalCharacters,
-      lowerCase: checkboxes.lower_case,
-      upperCase: checkboxes.upper_case,
-      numeric: checkboxes.numbers,
-      special: checkboxes.symbols
-    });
-    setPassword(password);
+    generatePassword();
   };
 
   const handleCheckbox = (evt: React.ChangeEvent<HTMLInputElement>) => {
