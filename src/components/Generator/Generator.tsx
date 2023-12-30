@@ -4,7 +4,7 @@ import { generate } from "@wcj/generate-password";
 import classNames from "classnames";
 
 import IconCopy from "../../assets/copy.svg";
-import { toasUtil } from "../../utils/toast.util";
+import { toastUtil } from "../../utils/toast.util";
 
 import "./styles.scss";
 
@@ -19,12 +19,12 @@ export const Generator = () => {
     symbols: false
   });
   const [password, setPassword] = useState("");
-  const [totalCharactes, setTotalCharacters] = useState(0);
+  const [totalCharacters, setTotalCharacters] = useState(0);
 
   const isDisabled = useMemo(() => {
     const { upper_case, lower_case, numbers, symbols } = checkboxes;
-    return totalCharactes === 0 && (!upper_case || !lower_case || !numbers || !symbols);
-  }, [totalCharactes, checkboxes]);
+    return totalCharacters === 0 && (!upper_case || !lower_case || !numbers || !symbols);
+  }, [totalCharacters, checkboxes]);
 
   const choppedPassword = useMemo(() => {
     if (password.length <= MIN_CHARACTERS) return password;
@@ -34,7 +34,7 @@ export const Generator = () => {
   const handleCopy = async () => {
     if (isDisabled) return null;
     await navigator.clipboard.writeText(password);
-    toasUtil("Copied to clipboard !");
+    toastUtil("Copied to clipboard !");
   };
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +43,7 @@ export const Generator = () => {
 
   const handleClick = () => {
     const password = generate({
-      length: totalCharactes,
+      length: totalCharacters,
       lowerCase: checkboxes.lower_case,
       upperCase: checkboxes.upper_case,
       numeric: checkboxes.numbers,
@@ -78,11 +78,11 @@ export const Generator = () => {
       <div className='form'>
         <div className="form__header">
           <span className="form__title">Character Lenght</span>
-          <span className="form__value">{totalCharactes}</span>
+          <span className="form__value">{totalCharacters}</span>
         </div>
 
         <div className="form__content">
-          <input className="form__input" type="range" value={totalCharactes} onChange={handleChange} max={MAX_CHARACTERS} />
+          <input className="form__input" type="range" value={totalCharacters} onChange={handleChange} max={MAX_CHARACTERS} />
 
           <div className="form__checkboxes">
             <label>

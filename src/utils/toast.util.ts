@@ -1,6 +1,6 @@
 import { toast, ToastPosition } from "react-toastify";
 
-export const toasUtil = (title: string, position: ToastPosition = "top-right") => toast(title, {
+export const toastUtil = (title: string, position: ToastPosition = "top-right") => toast(title, {
   position,
   autoClose: 5000,
   hideProgressBar: false,
