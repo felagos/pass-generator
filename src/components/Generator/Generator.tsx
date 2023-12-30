@@ -1,35 +1,25 @@
-import { useMemo, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { generate } from "@wcj/generate-password";
 import classNames from "classnames";
 
 import IconCopy from "../../assets/copy.svg";
+import { useGenerator } from "../../hooks/userGenerator";
 import { toastUtil } from "../../utils/toast.util";
 
 import "./styles.scss";
 
-const MAX_CHARACTERS = 32;
-const MIN_CHARACTERS = 24;
-
 export const Generator = () => {
-  const [checkboxes, setCheckboxes] = useState({
-    upper_case: false,
-    lower_case: false,
-    numbers: false,
-    symbols: false
-  });
-  const [password, setPassword] = useState("");
-  const [totalCharacters, setTotalCharacters] = useState(0);
-
-  const isDisabled = useMemo(() => {
-    const { upper_case, lower_case, numbers, symbols } = checkboxes;
-    return totalCharacters === 0 && (!upper_case || !lower_case || !numbers || !symbols);
-  }, [totalCharacters, checkboxes]);
-
-  const choppedPassword = useMemo(() => {
-    if (password.length <= MIN_CHARACTERS) return password;
-    return `${password.slice(0, MIN_CHARACTERS)} ...`;
-  }, [password]);
+  const {
+    checkboxes,
+    setCheckboxes,
+    password,
+    setPassword,
+    totalCharacters,
+    setTotalCharacters,
+    choppedPassword,
+    isDisabled,
+    MAX_CHARACTERS,
+  } = useGenerator();
 
   const handleCopy = async () => {
     if (isDisabled) return null;
