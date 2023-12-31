@@ -15,3 +15,17 @@ jobs:
           echo "This is the first command"
           echo "This is the second command"
           echo "This is the third command"
+  parallel-job-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Echo a string
+        run: |
+          echo "Hello World from MacOS machine"
+          sw_vers
+  dependent-job-window:
+    runs-on: windows-latest
+    needs: [parallel-job-macos]
+    steps:
+      - name: Echo a string
+        run: |
+          echo "Hello World from Windows machine"
