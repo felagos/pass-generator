@@ -1,0 +1,17 @@
+name: Deploy
+on: [push]
+
+jobs:
+  run-shell-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo a string
+        run: |
+          echo "Hello World"
+          echo "This is a shell command"
+          echo "You can run any shell command here"
+      - name: Multiple Commands
+        run: |
+          echo "This is the first command"
+          echo "This is the second command"
+          echo "This is the third command"
