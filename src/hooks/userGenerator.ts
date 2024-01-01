@@ -26,7 +26,7 @@ export const useGenerator = () => {
   }, [password]);
 
   const generatePassword = () => {
-    generate({
+    const password = generate({
       length: totalCharacters,
       lowerCase: checkboxes.lower_case,
       upperCase: checkboxes.upper_case,
